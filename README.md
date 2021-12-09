@@ -5,4 +5,4 @@ The self-similiarity is however computed based on the song structure (sections) 
 Further the lyrics are loaded using the genius.com api giving it access to a huge lyrics-database.
 
 # links:
-<a href="https://github.com/JLiekenbrock/lyrics-visualiser/tree/main/UML">UML<>
+<a href="https://github.com/JLiekenbrock/lyrics-visualiser/tree/main/UML">UML</a>
