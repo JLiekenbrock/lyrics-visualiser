@@ -50,6 +50,7 @@ fig = px.imshow(d,title="Jaccard index between lyric lines")
 df = pd.DataFrame(data=song,columns=["lines"]).groupby("lines").size().reset_index(name='size').sort_values(by=["size","lines"],ascending=False)
 
 app = dash.Dash(__name__)
+server = app.server
 
 # assume you have a "long-form" data frame
 # see https://plotly.com/python/px-arguments/ for more options
