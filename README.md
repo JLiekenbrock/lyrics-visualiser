@@ -11,4 +11,6 @@ Further the lyrics are loaded using the genius.com api giving it access to a hug
 
 <a href="https://miro.com/app/board/uXjVOccEnLI=/?invite_link_id=553649028755">3: Event-Storming/DDD</a>
 
+<a href="https://sonarcloud.io/summary/new_code?id=JLiekenbrock_lyrics-visualiser">4: Metrics</a>
+
 <a href="https://github.com/JLiekenbrock/lyrics-visualiser/blob/main/clean_code.txt">5: Clean Code</a>
