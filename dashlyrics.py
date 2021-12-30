@@ -10,7 +10,7 @@ import dash_table
 
 
 import lyricsgenius
-import re Dash: A web application framework for your data. 
+import re
 import numpy as np
 import nltk
 
