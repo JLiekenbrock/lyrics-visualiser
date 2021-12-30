@@ -1,8 +1,12 @@
 # lyrics-visualiser
-An app that visualises lyrics based on their section/line-based self-similiarity. 
+This repository contains a python app written with dash that visualises lyrics based on their section/line-based self-similiarity. 
+The app is automatically deployed to heroku after each successful commit to the repository:
+<a href="http://dashlyrics.herokuapp.com/">http://dashlyrics.herokuapp.com/</a>
+
 It is inspired by https://github.com/colinmorris/SongSim. 
 The self-similiarity is however computed based on the song structure (sections) using the jaccard-distance instead of matching single words.
 Further the lyrics are loaded using the genius.com api giving it access to a huge lyrics-database.
+
 
 # links:
 <a href="https://github.com/JLiekenbrock/lyrics-visualiser">1: git</a>
