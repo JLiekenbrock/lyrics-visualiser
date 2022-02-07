@@ -4,8 +4,6 @@ import lyricsgenius
 
 genius = songsearch.geniuslyrics()
 
-
-
 def test_session():
     """Artist
     Test the session
@@ -16,7 +14,7 @@ test_session()
 
 def test_search_artist(Artist):
     """
-    Test the set_artist method
+    Test the search_artist method
     """
     genius.search_artist(Artist)
     assert genius.get_artist() == Artist
@@ -24,30 +22,30 @@ def test_search_artist(Artist):
 
 test_search_artist("The Beatles")
 
-def test_search_title(Title):
+def test_search_artist_invalid(Artist):
+    """
+    Test the search_artist method
+    """
+    genius.search_artist(Artist)
+    assert genius.get_artist() == Artist
+    assert genius.get_artistinstance() is None
+
+test_search_artist_invalid("")
+
+def test_search_lyrics(title,artist):
     """
     Test the set_title method
     """
-    genius.search_title(Title)
-    assert genius.get_title() == Title
+    genius.search_lyrics(title,artist)
+    assert type(genius.get_lyrics()) == str
 
-test_search_title("Let It Be")
+test_search_lyrics("Let It Be","The Beatles")
 
-def test_songsearch_init():
+def test_search_lyrics_invalid(title,artist):
     """
-    Test the songsearch class
+    Test the set_title method
     """
-    s = songsearch.SongSearch()
-    assert s.search_results == []
-    assert s.search_term == ""
+    genius.search_lyrics(title,artist)
+    assert type(genius.get_lyrics()) == None
 
-songsearch.find_song("", "")
-
-genius.get_sessioninfo()
-
-genius = lyricsgenius.Genius("u41cjDZINLUj4yX8g6x-4BaejLoZtqel0vN-jEsXag4gjfp85C9NA0oxzaf9Oxk1")
-
-artist=genius.search_artist("ahhhhhhhhh", max_songs=1)
-
-type(artist)
-
+test_search_lyrics_invalid("","The Beatles")
