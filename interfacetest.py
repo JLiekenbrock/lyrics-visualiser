@@ -21,33 +21,55 @@ server = app.server
 
 app.layout = html.Div(children=[
     html.H1(children='Lyrics Visualiser'),
-    html.Button('Click Me', id='button'),
+
     html.Div(children='''
         Dash: A web application framework for your data.
     '''),
+
+    html.Div([
+
+        html.Label('Artist:'),
+        dcc.Input(id='artist'),
+
+        html.Label('Songtitle:'),
+        dcc.Input(id='songtitle'),
+
+        html.Button('Search Lyrics!', id='search',n_clicks=0),
+    ]),
+
     dcc.Graph(
         id='example-graph',
     ),
     dcc.Store(id='intermediate-value')
 ])
 
-@app.callback(Output('intermediate-value', 'data'), Input('button', 'value'))
-def get_lyrics(value):
-    s = songsearch.find_song("dummy", "dummy")
-  
-    return json.dumps(s)
+@app.callback(
+    Output('intermediate-value', 'data'), 
+    Input('search', 'n_clicks'),
+    State("artist", "value"),
+    State("songtitle", "value"),
+)
+def get_lyrics(search,artist,songtitle):
+
+    if artist is not None or "" and songtitle is not None or "":
+        songtitle = songtitle
+        artist = artist
+        s = songsearch.find_song(artist, songtitle)
+        return json.dumps(s)
+    else:
+        return json.dumps("no data here")
 
 @app.callback(Output('example-graph', 'figure'), Input('intermediate-value', 'data'))
 def update_graph(jsonified_cleaned_data):
-
-    lyrics = nlp.clean_lyrics(json.loads(jsonified_cleaned_data))
-    distances = nlp.distances(lyrics)
+    if jsonified_cleaned_data is not None:
+        lyrics = nlp.clean_lyrics(json.loads(jsonified_cleaned_data))
+        distances = nlp.distances(lyrics)    
+        figure=visualisation.heatmap(distances)
+        return figure
+    else:
+        return None
     # more generally, this line would be
-    # json.loads(jsonified_cleaned_data        figure=visualisation.heatmap(distances)
-    
-    figure=visualisation.heatmap(distances)
-
-    return figure
+    # json.loads(jsonified_cleaned_data        figure=visualisation.heatmap(distances)n figure
 
 if __name__ == '__main__':
     app.run_server(debug=True)

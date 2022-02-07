@@ -25,13 +25,22 @@ app.layout = html.Div(children=[
     html.Div(children='''
         Dash: A web application framework for your data.
     '''),
-    dcc.Input(
-        id='user-input',
-        type='number',
-        value=30,            
-        style={'fontSize':28},
-        debounce = True
-    ),
+    html.Div([
+        html.Button('Click Me', id='button'),
+        html.H3(id='button-clicks'),
+
+        html.Hr(),
+
+        html.Label('Input 1'),
+        dcc.Input(id='input-1'),
+
+        html.Label('Input 2'),
+        dcc.Input(id='input-2'),
+
+        html.Button(id='button-2'),
+
+        html.Div(id='output')
+    ])
 
     dcc.Graph(
         id='example-graph',
