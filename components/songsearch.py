@@ -1,16 +1,44 @@
 import lyricsgenius
 
-def find_song(artist, title):
-    genius = lyricsgenius.Genius("u41cjDZINLUj4yX8g6x-4BaejLoZtqel0vN-jEsXag4gjfp85C9NA0oxzaf9Oxk1")
-    
-    art = artist
-    tit = title
-    while True:
-        try:
-            artist = genius.search_artist(art, max_songs=1)
-            song = artist.song(tit)
-            break
-        except:
-            pass
+# If using several lyrics provider this class should be inherited
+class geniuslyrics:
+    """
+    Class for searching for lyrics
+    """
+    def __init__(self,_token = "u41cjDZINLUj4yX8g6x-4BaejLoZtqel0vN-jEsXag4gjfp85C9NA0oxzaf9Oxk1",_timeout=15,_retries=3,_verbose=False):
+        self.__session = lyricsgenius.Genius(_token,timeout=_timeout,retries=_retries,verbose=_verbose)
+        self.__artistname = None
+        self.__artistinstance = None
+        self.__titlename = None
+        self.__titleinstance = None
+        self.__lyrics = None
 
-    return song.lyrics
+    def get_session(self):
+        return self.__session
+
+    def search_artist(self,artist):
+        if(artist is not self.__artistname):
+            self.__artistname = artist
+            self.__artistinstance = self.__session.search_artist(artist, max_songs=1)
+
+    def get_artist(self):
+        return self.__artistname
+
+    def get_artistinstance(self):
+        return self.__artistinstance
+
+    def search_title(self,title):
+        if title is not self.__titlename:
+            self.__titlename = title
+            self.__titleinstance = self.__artistinstance.song(title)
+        if self.__titleinstance is not None:
+            self.__set_lyrics()
+
+    def get_title(self):
+        return self.__titlename
+
+    def __set_lyrics(self):
+        self.__lyrics = self.__titleinstance.lyrics
+
+    def get_lyrics(self):
+        return self.__lyrics
