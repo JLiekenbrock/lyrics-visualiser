@@ -4,7 +4,6 @@
 import dash
 import dash_core_components as dcc
 import dash_html_components as html
-import plotly.express as px
 import pandas as pd
 import dash_table
 
@@ -13,6 +12,10 @@ import lyricsgenius
 import re
 import numpy as np
 import nltk
+
+import plotly
+
+import plotly.express as px
 
 genius = lyricsgenius.Genius("u41cjDZINLUj4yX8g6x-4BaejLoZtqel0vN-jEsXag4gjfp85C9NA0oxzaf9Oxk1")
 
@@ -33,7 +36,7 @@ song = song.splitlines()
 song[-1]=re.sub('[0-9]+', '', song[-1])
 
 # calculate distance-matrix
-lines = [line.split() for line in lyrics]
+lines = [line.split() for line in song]
 lines = [x for x in lines if x]
 
 l=len(lines)
@@ -46,6 +49,9 @@ for i,line in enumerate(lines):
 
 # plot result
 fig = px.imshow(d,title="Jaccard index between lyric lines")
+
+fig.show()
+
 
 df = pd.DataFrame(data=song,columns=["lines"]).groupby("lines").size().reset_index(name='size').sort_values(by=["size","lines"],ascending=False)
 
