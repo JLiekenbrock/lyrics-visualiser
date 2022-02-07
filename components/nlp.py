@@ -10,9 +10,8 @@ def clean_lyrics(rawlyrics):
     song = song.replace("\n\n\n", "\n")
     song = song.replace("\n\n", "\n").lstrip("\n")
 
-    #lyrics = song.replace(',', '')
-    #lyrics = lyrics.splitlines()
-    #lyrics[-1]=re.sub('[0-9]+', '', lyrics[-1])
+    # for removing commas if necessary
+    #song = song.replace(',', '')
 
     song = song.splitlines()
     song[-1] = re.sub('[0-9]+', '', song[-1])
@@ -32,8 +31,7 @@ def distances(cleanlyrics):
     for i,line in enumerate(lines):
         for j, line2 in enumerate(lines):
             d[i,j] = 1-nltk.jaccard_distance(set(line), set(line2))    
-
-    return(d)
+    return d
 
 # calculate repititions
 def repitiontable(song):
