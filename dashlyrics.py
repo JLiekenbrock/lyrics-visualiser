@@ -2,64 +2,16 @@
 # visit http://127.0.0.1:8050/ in your web browser.
 
 import dash
-import dash_core_components as dcc
-import dash_html_components as html
-import pandas as pd
-import dash_table
+from dash import dash, dcc, html, dash_table
+from dash.dependencies import Output, Input, State
+import json 
 
-
-import lyricsgenius
-import re
-import numpy as np
-import nltk
-
-import plotly
-
-import plotly.express as px
-
-genius = lyricsgenius.Genius("u41cjDZINLUj4yX8g6x-4BaejLoZtqel0vN-jEsXag4gjfp85C9NA0oxzaf9Oxk1")
-
-artist = genius.search_artist("The Beatles", max_songs=1)
-song = artist.song("Let It Be")
-
-# clean lyrics
-song = re.sub("[$[*&?].*[$]*&?]", '', song.lyrics)
-song = re.sub("EmbedShare.*", '', song)
-song = song.replace("\n\n\n", "\n")
-song = song.replace("\n\n", "\n").lstrip("\n")
-
-lyrics = song.replace(',', '')
-lyrics = lyrics.splitlines()
-lyrics[-1]=re.sub('[0-9]+', '', lyrics[-1])
-
-song = song.splitlines()
-song[-1]=re.sub('[0-9]+', '', song[-1])
-
-# calculate distance-matrix
-lines = [line.split() for line in song]
-lines = [x for x in lines if x]
-
-l=len(lines)
-
-d = np.zeros(shape=[l,l])
-
-for i,line in enumerate(lines):
-    for j, line2 in enumerate(lines):
-        d[i,j] = 1-nltk.jaccard_distance(set(line), set(line2))
-
-# plot result
-fig = px.imshow(d,title="Jaccard index between lyric lines")
-
-fig.show()
-
-
-df = pd.DataFrame(data=song,columns=["lines"]).groupby("lines").size().reset_index(name='size').sort_values(by=["size","lines"],ascending=False)
+from components import songsearch
+from components import nlp
+from components import visualisation
 
 app = dash.Dash(__name__)
 server = app.server
-
-# assume you have a "long-form" data frame
-# see https://plotly.com/python/px-arguments/ for more options
 
 app.layout = html.Div(children=[
     html.H1(children='Lyrics Visualiser'),
@@ -68,16 +20,47 @@ app.layout = html.Div(children=[
         Dash: A web application framework for your data.
     '''),
 
+    html.Div([
+        html.Label('Artist:'),
+        dcc.Input(id='artist'),
+
+        html.Label('Songtitle:'),
+        dcc.Input(id='songtitle'),
+
+        html.Button('Search Lyrics!', id='search',n_clicks=0),
+    ]),
+
     dcc.Graph(
         id='example-graph',
-        figure=fig
     ),
-    dash_table.DataTable(
-        id='table',
-        columns=[{"name": i, "id": i} for i in df.columns],
-        data=df.to_dict('records'),
-    )
+    dcc.Store(id='intermediate-value')
 ])
+
+@app.callback(
+    Output('intermediate-value', 'data'), 
+    Input('search', 'n_clicks'),
+    State("artist", "value"),
+    State("songtitle", "value"),
+)
+def get_lyrics(search,artist,songtitle):
+    if artist is not None or "" and songtitle is not None or "":
+        songtitle = songtitle
+        artist = artist
+        s = songsearch.find_song(artist, songtitle)
+        lyrics = nlp.clean_lyrics(s)
+        return json.dumps(lyrics)
+    else:
+        return json.dumps("no data here")
+
+@app.callback(Output('example-graph', 'figure'), Input('intermediate-value', 'data'))
+def update_graph(jsonified_cleaned_data):
+    if jsonified_cleaned_data is not None:
+        lyrics = json.loads(jsonified_cleaned_data)
+        distances = nlp.distances(lyrics)    
+        figure = visualisation.heatmap(distances)
+        return figure
+    else:
+        return None
 
 if __name__ == '__main__':
     app.run_server(debug=True)
