@@ -43,10 +43,10 @@ app.layout = html.Div(children=[
     State("songtitle", "value"),
 )
 def get_lyrics(search,artist,songtitle):
-    if artist is not None or "" and songtitle is not None or "":
-        songtitle = songtitle
-        artist = artist
-        s = songsearch.find_song(artist, songtitle)
+    if artist not in [None, ""] and songtitle not in [None,""]:
+        new_artist = artist
+        new_songtitle = songtitle
+        s = songsearch.find_song(new_artist, new_songtitle)
         lyrics = nlp.clean_lyrics(s)
         return json.dumps(lyrics)
     else:
