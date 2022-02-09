@@ -37,7 +37,10 @@ class geniuslyrics:
         return self.__titlename
 
     def __set_lyrics(self):
-        self.__lyrics = self.__titleinstance.lyrics
+        if self.__titleinstance is not None:
+            self.__lyrics = self.__titleinstance.lyrics
+        else: 
+            self.__lyrics = None
 
     def get_lyrics(self):
         return self.__lyrics
@@ -45,4 +48,5 @@ class geniuslyrics:
     def search_lyrics(self,title,artist):
         self.search_artist(artist)
         self.search_title(title)
+
         return self.get_lyrics()

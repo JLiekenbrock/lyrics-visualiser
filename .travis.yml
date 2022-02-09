@@ -1,0 +1,7 @@
+language: python
+jobs:
+  include:
+  - name: "Unit Tests"
+    python: "3.8"
+    env: TEST_SUITE=suite_3_8_unit
+script: ./tests/test_songsearch.py $TEST_SUITE
