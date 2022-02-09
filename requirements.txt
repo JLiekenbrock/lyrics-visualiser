@@ -8,4 +8,4 @@ lyricsgenius
 numpy
 nltk
 gunicorn
-pdoc
+pdoc3
