@@ -1,19 +1,22 @@
 language: python
 python:
   - "3.8"
+cache:
+  pip: true
 install:
   - pip install -r requirements.txt
 
 addons:
   sonarcloud:
-    organization: "jliekenbrock" # the key of the org you chose at step #3
+    organization: "jliekenbrock"
     token: $SONAR_TOKEN
 
-  # other script steps might be done before running the actual analysis
+# other script steps might be done before running the actual analysis
 # command to run tests
 script:
   - pytest
-  - sonar-scanner
+  # It is also possible to run sonar-scanner like this instead of integrating it directly in github
+  #- sonar-scanner
   - pdoc --force --html --output-dir docs components
 
 deploy:
