@@ -10,42 +10,33 @@ def test_session():
     """
     assert isinstance(genius.get_session(), lyricsgenius.genius.Genius)
 
-test_session()
-
-def test_search_artist(Artist):
+def test_search_artist():
     """
     Test the search_artist method
     """
-    genius.search_artist(Artist)
-    assert genius.get_artist() == Artist
+    genius.search_artist("The Beatles")
+    assert genius.get_artist() == "The Beatles"
     assert genius.get_artistinstance() is not None
 
-test_search_artist("The Beatles")
-
-def test_search_artist_invalid(Artist):
+def test_search_artist_invalid():
     """
     Test the search_artist method
     """
-    genius.search_artist(Artist)
-    assert genius.get_artist() == Artist
+    genius.search_artist("")
+    assert genius.get_artist() == None
     assert genius.get_artistinstance() is None
 
-test_search_artist_invalid("")
-
-def test_search_lyrics(title,artist):
+def test_search_lyrics():
     """
     Test the set_title method
     """
-    genius.search_lyrics(title,artist)
+    genius.search_lyrics("Let It Be","The Beatles")
     assert type(genius.get_lyrics()) == str
 
-test_search_lyrics("Let It Be","The Beatles")
 
-def test_search_lyrics_invalid(title,artist):
+def test_search_lyrics_invalid():
     """
     Test the set_title method
     """
-    genius.search_lyrics(title,artist)
+    genius.search_lyrics("","")
     assert type(genius.get_lyrics()) == None
-
-#test_search_lyrics_invalid("","The Beatles")
