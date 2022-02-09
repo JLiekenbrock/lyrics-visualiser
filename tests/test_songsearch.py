@@ -23,7 +23,7 @@ def test_search_artist_invalid():
     Test the search_artist method
     """
     genius.search_artist("")
-    assert genius.get_artist() == None
+    assert genius.get_artist() == ""
     assert genius.get_artistinstance() is None
 
 def test_search_lyrics():
@@ -39,4 +39,4 @@ def test_search_lyrics_invalid():
     Test the set_title method
     """
     genius.search_lyrics("","")
-    assert type(genius.get_lyrics()) == None
+    assert isinstance(genius.get_lyrics(), type(None))
