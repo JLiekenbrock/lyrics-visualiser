@@ -3,9 +3,17 @@ python:
   - "3.8"
 install:
   - pip install -r requirements.txt
+
+addons:
+  sonarcloud:
+    organization: "jliekenbrock" # the key of the org you chose at step #3
+    token: $SONAR_TOKEN
+
+  # other script steps might be done before running the actual analysis
 # command to run tests
 script:
   - pytest
+  - sonar-scanner
   - pdoc --force --html --output-dir docs components
 
 deploy:
