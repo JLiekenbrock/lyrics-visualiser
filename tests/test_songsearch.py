@@ -48,4 +48,4 @@ def test_search_lyrics_invalid(title,artist):
     genius.search_lyrics(title,artist)
     assert type(genius.get_lyrics()) == None
 
-test_search_lyrics_invalid("","The Beatles")
+#test_search_lyrics_invalid("","The Beatles")

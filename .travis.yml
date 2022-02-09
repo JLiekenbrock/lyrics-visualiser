@@ -15,3 +15,5 @@ deploy:
   keep_history: true
   on:
     branch: main
+  local_dir: docs/components
+
