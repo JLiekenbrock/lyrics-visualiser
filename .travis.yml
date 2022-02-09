@@ -28,3 +28,7 @@ deploy:
     branch: main
   local_dir: docs/components
 
+deploy:
+  provider: heroku
+  api_key: $HEROKU_TOKEN
+  app: lyricsvis
