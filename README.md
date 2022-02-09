@@ -18,3 +18,8 @@ Further the lyrics are loaded using the genius.com api giving it access to a hug
 <a href="https://sonarcloud.io/summary/new_code?id=JLiekenbrock_lyrics-visualiser" target="_blank">4: Metrics</a>
 
 <a href="https://github.com/JLiekenbrock/lyrics-visualiser/blob/main/clean_code.txt" target="_blank">5: Clean Code</a>
+
+<a href="https://app.travis-ci.com/github/JLiekenbrock/lyrics-visualiser" target="_blank">6: Travis CI, runs tests and uploads Documentation generated with pdoc3 to Github Pages</a>
+
+<a href="https://jliekenbrock.github.io/lyrics-visualiser/index.html" target="_blank">6: automated Documentation</a>
+
