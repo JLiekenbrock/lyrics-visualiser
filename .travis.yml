@@ -1,6 +1,7 @@
 language: python
-python:
-  - "3.8"
+#python:
+#  - "3.8"
+
 cache:
   pip: true
 install:
@@ -30,7 +31,7 @@ deploy:
 
 before_deploy:
   - rvm $(travis_internal_ruby) --fuzzy do ruby -S gem install faraday -v 1.8.0
-  
+
 deploy:
   provider: heroku
   api_key: $HEROKU_TOKEN

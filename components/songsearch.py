@@ -1,5 +1,23 @@
 import lyricsgenius
 
+class Song():
+    artist = ""
+    title = ""
+    lyrics = ""
+
+    def __str__(self):
+        return "Song=>" + "[" + self.artist + ","+ self.title+ "]"
+
+    def setArtist(self, anArtist):
+        self.artist = anArtist
+        return self
+
+    def setTitle(self, aTitle):
+        self.title = aTitle
+        return self
+
+song = Song()
+
 # If using several lyrics provider this class should be inherited
 class geniuslyrics:
     """
@@ -51,5 +69,4 @@ class geniuslyrics:
     def search_lyrics(self,title,artist):
         self.search_artist(artist)
         self.search_title(title)
-
         return self.get_lyrics()

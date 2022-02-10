@@ -13,6 +13,7 @@ from components import visualisation
 app = dash.Dash(__name__)
 server = app.server
 genius = songsearch.geniuslyrics()
+song = songsearch.song()
 
 
 app.layout = html.Div(children=[
@@ -46,6 +47,9 @@ app.layout = html.Div(children=[
 )
 def get_lyrics(search,artist,songtitle):
     if artist not in [None, ""] and songtitle not in [None,""]:
+        
+        song.setArtist("The Beatles").setTitle("Hey Jude")
+
         new_artist = artist
         new_songtitle = songtitle
         s = genius.search_lyrics(new_artist, new_songtitle)
