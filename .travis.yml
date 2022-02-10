@@ -26,14 +26,14 @@ before_deploy:
   - mkdocs build --verbose --clean --strict # Build a local version of the docs
 
 deploy:
-  provider: heroku
-  api_key: $HEROKU_TOKEN
-  app: 
-    main: lyricsvis
-  provider: pages
-  skip_cleanup: true
-  github_token: $GITHUB_TOKEN
-  keep_history: true
-  local_dir: site
-  on:
-    branch: main
+  - provider: heroku
+    api_key: $HEROKU_TOKEN
+    app: 
+      main: lyricsvis
+  - provider: pages
+    skip_cleanup: true
+    github_token: $GITHUB_TOKEN
+    keep_history: true
+    local_dir: site
+    on:
+      branch: main
