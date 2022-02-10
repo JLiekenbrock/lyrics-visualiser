@@ -19,28 +19,20 @@ script:
   - pytest
   # It is also possible to run sonar-scanner like this instead of integrating it directly in github
   #- sonar-scanner
-  - pdoc --force --html --output-dir docs components
+  - pdoc --force --html --output-dir site components
 
-deploy:
-  provider: pages
-  skip_cleanup: true
-  github_token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
-  keep_history: true
-  on:
-    branch: main
-  local_dir: docs/components
+#deploy:
+#  provider: pages
+#  skip_cleanup: true
+#  github_token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
+#  keep_history: true
+#  on:
+#    branch: main
+#  local_dir: docs/components
 
 before_deploy:
   - rvm $(travis_internal_ruby) --fuzzy do ruby -S gem install faraday -v 1.8.0
   - mkdocs build --verbose --clean --strict # Build a local version of the docs
-
-deploy:
-  provider: heroku
-  api_key: $HEROKU_TOKEN
-  app: 
-    main: lyricsvis
-
-#script: true # Skip script (Don't use this if one already exists):
 
 deploy: # Deploy documentation to Github in the gh_pages branch
     provider: pages
@@ -50,3 +42,11 @@ deploy: # Deploy documentation to Github in the gh_pages branch
     local_dir: site
     on:
       branch: main
+
+
+deploy:
+  provider: heroku
+  api_key: $HEROKU_TOKEN
+  app: 
+    main: lyricsvis
+
