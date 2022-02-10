@@ -21,15 +21,6 @@ script: true
   #- sonar-scanner
   #- pdoc --force --html --output-dir docs components
 
-deploy:
-  provider: pages
-  skip_cleanup: true
-  github_token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
-  keep_history: true
-  on:
-    branch: main
-  local_dir: docs/components
-
 before_deploy:
   - rvm $(travis_internal_ruby) --fuzzy do ruby -S gem install faraday -v 1.8.0
   - mkdocs build --verbose --clean --strict # Build a local version of the docs
@@ -39,14 +30,10 @@ deploy:
   api_key: $HEROKU_TOKEN
   app: 
     main: lyricsvis
-
-#script: true # Skip script (Don't use this if one already exists):
-
-deploy: # Deploy documentation to Github in the gh_pages branch
-    provider: pages
-    skip_cleanup: true
-    github_token: $GITHUB_TOKEN
-    keep_history: true
-    local_dir: site
-    on:
-      branch: main
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN
+  keep_history: true
+  local_dir: site
+  on:
+    branch: main
