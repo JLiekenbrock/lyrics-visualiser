@@ -13,7 +13,7 @@ from components import visualisation
 app = dash.Dash(__name__)
 server = app.server
 genius = songsearch.geniuslyrics()
-song = songsearch.song()
+song = songsearch.Song()
 
 
 app.layout = html.Div(children=[

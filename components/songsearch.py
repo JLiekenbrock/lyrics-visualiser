@@ -1,10 +1,11 @@
 import lyricsgenius
 
+
+## Interface to the Genius API
 class Song():
     artist = ""
     title = ""
-    lyrics = ""
-
+    
     def __str__(self):
         return "Song=>" + "[" + self.artist + ","+ self.title+ "]"
 
@@ -15,8 +16,6 @@ class Song():
     def setTitle(self, aTitle):
         self.title = aTitle
         return self
-
-song = Song()
 
 # If using several lyrics provider this class should be inherited
 class geniuslyrics:
