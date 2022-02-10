@@ -24,6 +24,7 @@ script: true
 before_deploy:
   - rvm $(travis_internal_ruby) --fuzzy do ruby -S gem install faraday -v 1.8.0
   - mkdocs build --verbose --clean --strict # Build a local version of the docs
+  - pdoc --force --html --output-dir docs components
 
 deploy:
   - provider: heroku
