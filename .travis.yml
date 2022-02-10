@@ -6,43 +6,47 @@ cache:
   pip: true
 install:
   - pip install -r requirements.txt
-  - pip install mkdocs mkdocs-material pymdown-extensions pygments 
+  - pip install mkdocs mkdocs-material pymdown-extensions pygments # Install the required dependencies
 
 addons:
   sonarcloud:
     organization: "jliekenbrock"
     token: $SONAR_TOKEN
 
-script:
+# other script steps might be done before running the actual analysis
+# command to run tests
+script: true
   - pytest
-  - sonar-scanner
+  # It is also possible to run sonar-scanner like this instead of integrating it directly in github
+  #- sonar-scanner
+  - pdoc --force --html --output-dir docs components
 
-#deploy:
-#  provider: pages
-#  skip_cleanup: true
-#  github_token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
-#  keep_history: true
-#  on:
-#    branch: main
-#  local_dir: docs/components
-
-
-before_deploy:
-  # install dependencies for deploying to heroku:
-  - rvm $(travis_internal_ruby) --fuzzy do ruby -S gem install faraday -v 1.8.0
-  # build the docs
-  - mkdocs build --verbose --clean --strict # Build a local version of the docs
-  #- pdoc --force --html --output-dir site components
-
-deploy: # Deploy documentation to Github in the gh_pages branch
+deploy:
   provider: pages
   skip_cleanup: true
-  github_token: $GITHUB_TOKEN
-  keep_history: false
-  local_dir: site
+  github_token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
+  keep_history: true
   on:
     branch: main
+  local_dir: docs/components
+
+before_deploy:
+  - rvm $(travis_internal_ruby) --fuzzy do ruby -S gem install faraday -v 1.8.0
+  - mkdocs build --verbose --clean --strict # Build a local version of the docs
+
+deploy:
   provider: heroku
   api_key: $HEROKU_TOKEN
   app: 
     main: lyricsvis
+
+#script: true # Skip script (Don't use this if one already exists):
+
+deploy: # Deploy documentation to Github in the gh_pages branch
+    provider: pages
+    skip_cleanup: true
+    github_token: $GITHUB_TOKEN
+    keep_history: true
+    local_dir: site
+    on:
+      branch: main
