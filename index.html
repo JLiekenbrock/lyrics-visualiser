@@ -52,21 +52,45 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="1"><a href="#welcome-to-mkdocs" class="nav-link">Welcome to MkDocs</a>
+            <li class="nav-item" data-level="1"><a href="#my-docs" class="nav-link">My Docs</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#uml" class="nav-link">UML:</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#clean-code" class="nav-link">Clean Code</a>
+            <li class="nav-item" data-level="2"><a href="#1-git" class="nav-link">1. git</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#commands" class="nav-link">Commands</a>
+            <li class="nav-item" data-level="2"><a href="#2-uml" class="nav-link">2. UML</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#project-layout" class="nav-link">Project layout</a>
+            <li class="nav-item" data-level="2"><a href="#3-event-stormingddd" class="nav-link">3. Event-Storming/DDD</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#4-metrics" class="nav-link">4. Metrics</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#5-clean-code" class="nav-link">5. Clean Code</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#6-build-management-8-continuous-delivery" class="nav-link">6. Build Management + 8. Continuous Delivery</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#7-unit-tests" class="nav-link">7. Unit-Tests</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#9-ide" class="nav-link">9. IDE</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#10-dsl" class="nav-link">10. DSL</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#11-functional-programming" class="nav-link">11. Functional Programming</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -77,24 +101,48 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="welcome-to-mkdocs">Welcome to MkDocs</h1>
-<h2 id="uml">UML:</h2>
+<h1 id="my-docs">My Docs</h1>
+<h2 id="1-git">1. git</h2>
+<p><a href="https://github.com/JLiekenbrock/lyrics-visualiser">1: git</a></p>
+<h2 id="2-uml">2. UML</h2>
 <p><img alt="UML" src="UML/nomnoml.svg" /></p>
-<h2 id="clean-code">Clean Code</h2>
-<p>For full documentation visit <a href="https://www.mkdocs.org">mkdocs.org</a>.</p>
-<h2 id="commands">Commands</h2>
-<ul>
-<li><code>mkdocs new [dir-name]</code> - Create a new project.</li>
-<li><code>mkdocs serve</code> - Start the live-reloading docs server.</li>
-<li><code>mkdocs build</code> - Build the documentation site.</li>
-<li><code>mkdocs -h</code> - Print help message and exit.</li>
-</ul>
-<h2 id="project-layout">Project layout</h2>
-<pre><code>mkdocs.yml    # The configuration file.
-docs/
-    index.md  # The documentation homepage.
-    ...       # Other markdown pages, images and other files.
-</code></pre></div>
+<h2 id="3-event-stormingddd">3. Event-Storming/DDD</h2>
+<iframe width="768" height="432" src="https://miro.com/app/embed/uXjVOccEnLI=/?pres=1&frameId=3458764514893505685" frameBorder="0" scrolling="no" allowFullScreen></iframe>
+
+<h2 id="4-metrics">4. Metrics</h2>
+<p>I used <a href="https://sonarcloud.io/summary/new_code?id=JLiekenbrock_lyrics-visualiser" target="_blank">Sonarcloud</a>, which is sonarqube in the cloud, as i wanted the whole project to be cloud based.
+It also gives you the ability to embed lot's of different badges:
+<a href="https://sonarcloud.io/summary/new_code?id=JLiekenbrock_lyrics-visualiser"><img alt="Maintainability Rating" src="https://sonarcloud.io/api/project_badges/measure?project=JLiekenbrock_lyrics-visualiser&amp;metric=sqale_rating" /></a></p>
+<h2 id="5-clean-code">5. Clean Code</h2>
+<p>My Top 10 Clean Code Principals</p>
+<ol>
+<li>KISS it</li>
+<li>keep it DRY</li>
+<li>Demeter</li>
+<li>SRP</li>
+<li>IOSP</li>
+<li>ISP</li>
+<li>SoC</li>
+<li>Naming Conventions</li>
+<li>DUP</li>
+<li>TDD</li>
+</ol>
+<h2 id="6-build-management-8-continuous-delivery">6. Build Management + 8. Continuous Delivery</h2>
+<p>The build management and continuos delivery are also completely cloud based.</p>
+<p>I used Travis for the build management and continuos delivery because all the services i use integrate extremely well with it. </p>
+<p>My Travis Pipeline: <a href="https://github.com/JLiekenbrock/lyrics-visualiser/blob/main/.travis.yml">travis.yml</a></p>
+<h3 id="build-management">Build Management</h3>
+<p>The Travis Pipeline runs the unit tests by calling pytest and is also connected to sonarcloud. 
+When the tests succeed this documentation is generated using the python libraries mkdocs and pdocs3.</p>
+<h3 id="continuos-delivery">Continuos Delivery</h3>
+<p>When the build is successful e.g. sonarqube and pytest are happy the documentation is regenerated and published to github pages.
+There is  <a href="https://jliekenbrock.github.io/lyrics-visualiser/components/index.html">technical documentation</a> generated based on the source code as well as what you are <a href="https://jliekenbrock.github.io/lyrics-visualiser/index.html">reading right now</a>.</p>
+<p><a href="https://github.com/JLiekenbrock/lyrics-visualiser/blob/main/docs/index.md">Documentation Code</a></p>
+<h2 id="7-unit-tests">7. Unit-Tests</h2>
+<p>The <a href="https://github.com/JLiekenbrock/lyrics-visualiser/tree/main/tests">Unit tests </a> are written with the help of the python library pytest.</p>
+<h2 id="9-ide">9. IDE</h2>
+<h2 id="10-dsl">10. DSL</h2>
+<h2 id="11-functional-programming">11. Functional Programming</h2></div>
             </div>
         </div>
 
@@ -175,5 +223,5 @@ docs/
 
 <!--
 MkDocs version : 1.2.3
-Build Date UTC : 2022-02-10 11:42:03.546157+00:00
+Build Date UTC : 2022-02-10 20:51:28.773512+00:00
 -->
