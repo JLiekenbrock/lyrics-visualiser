@@ -1,5 +1,11 @@
 # Welcome to MkDocs
 
+## UML:
+
+![UML](./UML/nomnoml.svg)
+
+## Clean Code
+
 For full documentation visit [mkdocs.org](https://www.mkdocs.org).
 
 ## Commands
