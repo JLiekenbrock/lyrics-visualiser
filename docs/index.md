@@ -1,4 +1,4 @@
-# Project Documentation
+# My Docs
  
 ## 1. git
 <a href="https://github.com/JLiekenbrock/lyrics-visualiser">1: git</a>
