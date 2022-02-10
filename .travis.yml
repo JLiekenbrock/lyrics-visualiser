@@ -28,7 +28,9 @@ script:
 
 
 before_deploy:
-  #- rvm $(travis_internal_ruby) --fuzzy do ruby -S gem install faraday -v 1.8.0
+  # install dependencies for deploying to heroku:
+  - rvm $(travis_internal_ruby) --fuzzy do ruby -S gem install faraday -v 1.8.0
+  # build the docs
   - mkdocs build --verbose --clean --strict # Build a local version of the docs
   #- pdoc --force --html --output-dir site components
 
