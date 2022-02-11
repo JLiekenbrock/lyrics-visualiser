@@ -31,7 +31,7 @@ def test_search_lyrics():
     Test the set_title method
     """
     genius.search_lyrics("Hey Jude","The Beatles")
-    assert genius.get_lyrics() == open('./tests/HeyJude.txt').read()
+    assert genius.get_lyrics() == open('./tests/testsong.txt').read()
 
 
 def test_search_lyrics_invalid():

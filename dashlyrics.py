@@ -49,20 +49,14 @@ def get_lyrics(search,artist,songtitle):
     if artist not in [None, ""] and songtitle not in [None,""]:
         lyrics = song.setArtist(artist).setTitle(songtitle).getLyrics()
         if lyrics is not None:
-            lyrics = nlp.clean_lyrics(lyrics)
-            return lyrics.to_json(orient="split")
+            return nlp.clean_lyrics(lyrics).to_json()
     else:
         return json.dumps("no data here")
 
 @app.callback(Output('example-graph', 'figure'), Input('intermediate-value', 'data'))
 def update_graph(jsonified_cleaned_data):
     if jsonified_cleaned_data is not None:
-        lyrics = pd.read_json(jsonified_cleaned_data, typ='series', orient='records')
-        distances = nlp.distances(lyrics)    
-        figure = visualisation.heatmap(distances)
-        return figure
-    else:
-        return None
+        return visualisation.heatmap(nlp.distances(pd.read_json(jsonified_cleaned_data, typ='series')))
 
 if __name__ == '__main__':
     app.run_server(debug=True)
