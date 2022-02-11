@@ -50,7 +50,7 @@ When the tests succeed this documentation is generated using the python librarie
 ### Continuos Delivery
 
 When the build is successful e.g. sonarqube and pytest are happy the documentation is regenerated and published to github pages.
-There is  <a href="https://jliekenbrock.github.io/lyrics-visualiser/components/index.html">technical documentation</a> generated based on the source code as well as what you are [reading right now](https://jliekenbrock.github.io/lyrics-visualiser/index.html).
+There is  <a href="https://jliekenbrock.github.io/lyrics-visualiser/lyrics-visualiser/index.html">technical documentation</a> generated based on the source code as well as what you are [reading right now](https://jliekenbrock.github.io/lyrics-visualiser/index.html).
 
 [Documentation Code](https://github.com/JLiekenbrock/lyrics-visualiser/blob/main/docs/index.md)
 
@@ -70,5 +70,12 @@ Shift+Enter is very useful. It runs the selected lines of code in a python termi
 Otherwise i'm mostly using the standard shortcuts everyone else uses.
 
 ## 10. DSL
+I created a class that uses the style of the Cars example in moodle:
+https://jliekenbrock.github.io/lyrics-visualiser/components/songsearch.html
 
 ## 11. Functional Programming
+I tried to use functional style where possible.
+The function clean_lyrics is written as sequence of function call. 
+It is stateless and also used in a functional style in the main.
+https://jliekenbrock.github.io/lyrics-visualiser/components/nlp.html#components.nlp.clean_lyrics
+
