@@ -56,6 +56,15 @@ There is  <a href="https://jliekenbrock.github.io/lyrics-visualiser/components/i
 The [Unit tests ](https://github.com/JLiekenbrock/lyrics-visualiser/tree/main/tests) are written with the help of the python library pytest.
 
 ## 9. IDE
+I use visual studio code as main IDE as it has great support for my main languages, namely R and Python.
+It also has integration for the Github Copilot AI, which is great in my opinion. It is especially useful when trying out new things like 
+libraries, because it often comes up with useful suggestions which helps exploring things faster.
+The in built explorer of vscode is also great as it easily let's you search through all files in your opened directory. You can even replace 
+code across multiple files at once. 
+
+Shortcuts i like:
+Shift+Enter is very useful. It runs the selected lines of code in a python terminal in the IDE.
+Otherwise i'm mostly using the standard shortcuts everyone else uses.
 
 ## 10. DSL
 
