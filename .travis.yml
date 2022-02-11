@@ -15,7 +15,7 @@ addons:
 
 # other script steps might be done before running the actual analysis
 # command to run tests
-script: true
+script:
   - pytest
   # It is also possible to run sonar-scanner like this instead of integrating it directly in github
   - sonar-scanner
