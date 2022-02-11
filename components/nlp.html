@@ -29,47 +29,34 @@
 <pre><code class="python">import pandas as pd
 import numpy as np
 import nltk
-import re
 
 # clean lyrics
 def clean_lyrics(rawlyrics):
-    song = re.sub(&#34;[$[*&amp;?].*[$]*&amp;?]&#34;, &#39;&#39;, rawlyrics)
-    song = re.sub(&#34;EmbedShare.*&#34;, &#39;&#39;, song)
-    song = song.replace(&#34;\n\n\n&#34;, &#34;\n&#34;)
-    song = song.replace(&#34;\n\n&#34;, &#34;\n&#34;).lstrip(&#34;\n&#34;)
-
-    # for removing commas if necessary
-    #song = song.replace(&#39;,&#39;, &#39;&#39;)
-
-    song = song.splitlines()
-    song[-1] = re.sub(&#39;[0-9]+&#39;, &#39;&#39;, song[-1])
-
-    return song
+    return pd.Series(rawlyrics).\
+        str.replace(&#34;EmbedShare.*&#34;, &#39;&#39;, regex = True).\
+        str.replace(&#34;Embed.*&#34;, &#39;&#39;, regex = True).\
+        str.replace(&#34;[$[*&amp;?].*[$]*&amp;?]&#34;, &#39;&#39;, regex = True).\
+        str.replace(&#34;\n\n\n&#34;, &#34;\n&#34;).\
+        str.replace(&#34;\n\n&#34;, &#34;\n&#34;).\
+        str.replace(&#39;[0-9]+&#39;, &#39;&#39;,regex= True).\
+        str.split(&#34;\n&#34;).\
+        explode(ignore_index=True)
 
 # calculate distances
 def distances(cleanlyrics):
-    # calculate distance-matrix
-    lines = [line.split() for line in cleanlyrics]
-    lines = [x for x in lines if x]
-
-    l=len(lines)
-
-    d = np.zeros(shape=[l,l])
-
-    for i,line in enumerate(lines):
-        for j, line2 in enumerate(lines):
-            d[i,j] = 1-nltk.jaccard_distance(set(line), set(line2))    
+    d = np.zeros(shape=[cleanlyrics.size,cleanlyrics.size])
+    for i,line in enumerate(cleanlyrics):
+       for j, line2 in enumerate(cleanlyrics):
+           d[i,j] = 1-nltk.jaccard_distance(set(line), set(line2))    
     return d
 
-# calculate repititions
+# calculate repititions, not used in current version
 def repitiontable(song):
-    repitions = pd.DataFrame(data=song,columns=[&#34;lines&#34;]).\
+    return pd.DataFrame(data=song,columns=[&#34;lines&#34;]).\
         groupby(&#34;lines&#34;).\
         size().\
         reset_index(name=&#39;size&#39;).\
-        sort_values(by=[&#34;size&#34;,&#34;lines&#34;],ascending=False)
-
-    return repitions</code></pre>
+        sort_values(by=[&#34;size&#34;,&#34;lines&#34;],ascending=False)</code></pre>
 </details>
 </section>
 <section>
@@ -89,18 +76,15 @@ def repitiontable(song):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def clean_lyrics(rawlyrics):
-    song = re.sub(&#34;[$[*&amp;?].*[$]*&amp;?]&#34;, &#39;&#39;, rawlyrics)
-    song = re.sub(&#34;EmbedShare.*&#34;, &#39;&#39;, song)
-    song = song.replace(&#34;\n\n\n&#34;, &#34;\n&#34;)
-    song = song.replace(&#34;\n\n&#34;, &#34;\n&#34;).lstrip(&#34;\n&#34;)
-
-    # for removing commas if necessary
-    #song = song.replace(&#39;,&#39;, &#39;&#39;)
-
-    song = song.splitlines()
-    song[-1] = re.sub(&#39;[0-9]+&#39;, &#39;&#39;, song[-1])
-
-    return song</code></pre>
+    return pd.Series(rawlyrics).\
+        str.replace(&#34;EmbedShare.*&#34;, &#39;&#39;, regex = True).\
+        str.replace(&#34;Embed.*&#34;, &#39;&#39;, regex = True).\
+        str.replace(&#34;[$[*&amp;?].*[$]*&amp;?]&#34;, &#39;&#39;, regex = True).\
+        str.replace(&#34;\n\n\n&#34;, &#34;\n&#34;).\
+        str.replace(&#34;\n\n&#34;, &#34;\n&#34;).\
+        str.replace(&#39;[0-9]+&#39;, &#39;&#39;,regex= True).\
+        str.split(&#34;\n&#34;).\
+        explode(ignore_index=True)</code></pre>
 </details>
 </dd>
 <dt id="components.nlp.distances"><code class="name flex">
@@ -113,17 +97,10 @@ def repitiontable(song):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def distances(cleanlyrics):
-    # calculate distance-matrix
-    lines = [line.split() for line in cleanlyrics]
-    lines = [x for x in lines if x]
-
-    l=len(lines)
-
-    d = np.zeros(shape=[l,l])
-
-    for i,line in enumerate(lines):
-        for j, line2 in enumerate(lines):
-            d[i,j] = 1-nltk.jaccard_distance(set(line), set(line2))    
+    d = np.zeros(shape=[cleanlyrics.size,cleanlyrics.size])
+    for i,line in enumerate(cleanlyrics):
+       for j, line2 in enumerate(cleanlyrics):
+           d[i,j] = 1-nltk.jaccard_distance(set(line), set(line2))    
     return d</code></pre>
 </details>
 </dd>
@@ -137,13 +114,11 @@ def repitiontable(song):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def repitiontable(song):
-    repitions = pd.DataFrame(data=song,columns=[&#34;lines&#34;]).\
+    return pd.DataFrame(data=song,columns=[&#34;lines&#34;]).\
         groupby(&#34;lines&#34;).\
         size().\
         reset_index(name=&#39;size&#39;).\
-        sort_values(by=[&#34;size&#34;,&#34;lines&#34;],ascending=False)
-
-    return repitions</code></pre>
+        sort_values(by=[&#34;size&#34;,&#34;lines&#34;],ascending=False)</code></pre>
 </details>
 </dd>
 </dl>

@@ -26,13 +26,15 @@
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">import lyricsgenius
+<pre><code class="python">from components import geniuswrapper
 
+genius = geniuswrapper.geniuslyrics()
 
-## Interface to the Genius API
+## Interface to the api-wrappers. based on the dsl example
 class Song():
     artist = &#34;&#34;
     title = &#34;&#34;
+    lyrics = &#34;&#34;
     
     def __str__(self):
         return &#34;Song=&gt;&#34; + &#34;[&#34; + self.artist + &#34;,&#34;+ self.title+ &#34;]&#34;
@@ -45,58 +47,10 @@ class Song():
         self.title = aTitle
         return self
 
-# If using several lyrics provider this class should be inherited
-class geniuslyrics:
-    &#34;&#34;&#34;
-    Class for searching for lyrics
-    &#34;&#34;&#34;
-    def __init__(self,_token = &#34;u41cjDZINLUj4yX8g6x-4BaejLoZtqel0vN-jEsXag4gjfp85C9NA0oxzaf9Oxk1&#34;,_timeout=15,_retries=3,_verbose=False):
-        self.__session = lyricsgenius.Genius(_token,timeout=_timeout,retries=_retries,verbose=_verbose)
-        self.__artistname = None
-        self.__artistinstance = None
-        self.__titlename = None
-        self.__titleinstance = None
-        self.__lyrics = None
-
-    def get_session(self):
-        return self.__session
-
-    def search_artist(self,artist):
-        if(artist is not self.__artistname):
-            self.__artistname = artist
-            self.__artistinstance = self.__session.search_artist(artist, max_songs=1)
-
-    def get_artist(self):
-        return self.__artistname
-
-    def get_artistinstance(self):
-        return self.__artistinstance
-
-    def search_title(self,title):
-        if title is not self.__titlename and self.__artistinstance is not None:
-            self.__titlename = title
-            self.__titleinstance = self.__artistinstance.song(title)
-            self.__set_lyrics()
-        else:
-            self.__titleinstance = None
-            self.__set_lyrics()
-
-    def get_title(self):
-        return self.__titlename
-
-    def __set_lyrics(self):
-        if self.__titleinstance is not None:
-            self.__lyrics = self.__titleinstance.lyrics
-        else: 
-            self.__lyrics = None
-
-    def get_lyrics(self):
-        return self.__lyrics
-
-    def search_lyrics(self,title,artist):
-        self.search_artist(artist)
-        self.search_title(title)
-        return self.get_lyrics()</code></pre>
+    def getLyrics(self,provider=&#34;Genius&#34;):
+        if provider == &#34;Genius&#34;:
+            self.lyrics = genius.search_lyrics(self.title,self.artist)
+            return self.lyrics</code></pre>
 </details>
 </section>
 <section>
@@ -120,6 +74,7 @@ class geniuslyrics:
 <pre><code class="python">class Song():
     artist = &#34;&#34;
     title = &#34;&#34;
+    lyrics = &#34;&#34;
     
     def __str__(self):
         return &#34;Song=&gt;&#34; + &#34;[&#34; + self.artist + &#34;,&#34;+ self.title+ &#34;]&#34;
@@ -130,11 +85,20 @@ class geniuslyrics:
 
     def setTitle(self, aTitle):
         self.title = aTitle
-        return self</code></pre>
+        return self
+
+    def getLyrics(self,provider=&#34;Genius&#34;):
+        if provider == &#34;Genius&#34;:
+            self.lyrics = genius.search_lyrics(self.title,self.artist)
+            return self.lyrics</code></pre>
 </details>
 <h3>Class variables</h3>
 <dl>
 <dt id="components.songsearch.Song.artist"><code class="name">var <span class="ident">artist</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="components.songsearch.Song.lyrics"><code class="name">var <span class="ident">lyrics</span></code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
@@ -145,6 +109,21 @@ class geniuslyrics:
 </dl>
 <h3>Methods</h3>
 <dl>
+<dt id="components.songsearch.Song.getLyrics"><code class="name flex">
+<span>def <span class="ident">getLyrics</span></span>(<span>self, provider='Genius')</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getLyrics(self,provider=&#34;Genius&#34;):
+    if provider == &#34;Genius&#34;:
+        self.lyrics = genius.search_lyrics(self.title,self.artist)
+        return self.lyrics</code></pre>
+</details>
+</dd>
 <dt id="components.songsearch.Song.setArtist"><code class="name flex">
 <span>def <span class="ident">setArtist</span></span>(<span>self, anArtist)</span>
 </code></dt>
@@ -175,185 +154,6 @@ class geniuslyrics:
 </dd>
 </dl>
 </dd>
-<dt id="components.songsearch.geniuslyrics"><code class="flex name class">
-<span>class <span class="ident">geniuslyrics</span></span>
-</code></dt>
-<dd>
-<div class="desc"><p>Class for searching for lyrics</p></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">class geniuslyrics:
-    &#34;&#34;&#34;
-    Class for searching for lyrics
-    &#34;&#34;&#34;
-    def __init__(self,_token = &#34;u41cjDZINLUj4yX8g6x-4BaejLoZtqel0vN-jEsXag4gjfp85C9NA0oxzaf9Oxk1&#34;,_timeout=15,_retries=3,_verbose=False):
-        self.__session = lyricsgenius.Genius(_token,timeout=_timeout,retries=_retries,verbose=_verbose)
-        self.__artistname = None
-        self.__artistinstance = None
-        self.__titlename = None
-        self.__titleinstance = None
-        self.__lyrics = None
-
-    def get_session(self):
-        return self.__session
-
-    def search_artist(self,artist):
-        if(artist is not self.__artistname):
-            self.__artistname = artist
-            self.__artistinstance = self.__session.search_artist(artist, max_songs=1)
-
-    def get_artist(self):
-        return self.__artistname
-
-    def get_artistinstance(self):
-        return self.__artistinstance
-
-    def search_title(self,title):
-        if title is not self.__titlename and self.__artistinstance is not None:
-            self.__titlename = title
-            self.__titleinstance = self.__artistinstance.song(title)
-            self.__set_lyrics()
-        else:
-            self.__titleinstance = None
-            self.__set_lyrics()
-
-    def get_title(self):
-        return self.__titlename
-
-    def __set_lyrics(self):
-        if self.__titleinstance is not None:
-            self.__lyrics = self.__titleinstance.lyrics
-        else: 
-            self.__lyrics = None
-
-    def get_lyrics(self):
-        return self.__lyrics
-
-    def search_lyrics(self,title,artist):
-        self.search_artist(artist)
-        self.search_title(title)
-        return self.get_lyrics()</code></pre>
-</details>
-<h3>Methods</h3>
-<dl>
-<dt id="components.songsearch.geniuslyrics.get_artist"><code class="name flex">
-<span>def <span class="ident">get_artist</span></span>(<span>self)</span>
-</code></dt>
-<dd>
-<div class="desc"></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def get_artist(self):
-    return self.__artistname</code></pre>
-</details>
-</dd>
-<dt id="components.songsearch.geniuslyrics.get_artistinstance"><code class="name flex">
-<span>def <span class="ident">get_artistinstance</span></span>(<span>self)</span>
-</code></dt>
-<dd>
-<div class="desc"></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def get_artistinstance(self):
-    return self.__artistinstance</code></pre>
-</details>
-</dd>
-<dt id="components.songsearch.geniuslyrics.get_lyrics"><code class="name flex">
-<span>def <span class="ident">get_lyrics</span></span>(<span>self)</span>
-</code></dt>
-<dd>
-<div class="desc"></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def get_lyrics(self):
-    return self.__lyrics</code></pre>
-</details>
-</dd>
-<dt id="components.songsearch.geniuslyrics.get_session"><code class="name flex">
-<span>def <span class="ident">get_session</span></span>(<span>self)</span>
-</code></dt>
-<dd>
-<div class="desc"></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def get_session(self):
-    return self.__session</code></pre>
-</details>
-</dd>
-<dt id="components.songsearch.geniuslyrics.get_title"><code class="name flex">
-<span>def <span class="ident">get_title</span></span>(<span>self)</span>
-</code></dt>
-<dd>
-<div class="desc"></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def get_title(self):
-    return self.__titlename</code></pre>
-</details>
-</dd>
-<dt id="components.songsearch.geniuslyrics.search_artist"><code class="name flex">
-<span>def <span class="ident">search_artist</span></span>(<span>self, artist)</span>
-</code></dt>
-<dd>
-<div class="desc"></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def search_artist(self,artist):
-    if(artist is not self.__artistname):
-        self.__artistname = artist
-        self.__artistinstance = self.__session.search_artist(artist, max_songs=1)</code></pre>
-</details>
-</dd>
-<dt id="components.songsearch.geniuslyrics.search_lyrics"><code class="name flex">
-<span>def <span class="ident">search_lyrics</span></span>(<span>self, title, artist)</span>
-</code></dt>
-<dd>
-<div class="desc"></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def search_lyrics(self,title,artist):
-    self.search_artist(artist)
-    self.search_title(title)
-    return self.get_lyrics()</code></pre>
-</details>
-</dd>
-<dt id="components.songsearch.geniuslyrics.search_title"><code class="name flex">
-<span>def <span class="ident">search_title</span></span>(<span>self, title)</span>
-</code></dt>
-<dd>
-<div class="desc"></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def search_title(self,title):
-    if title is not self.__titlename and self.__artistinstance is not None:
-        self.__titlename = title
-        self.__titleinstance = self.__artistinstance.song(title)
-        self.__set_lyrics()
-    else:
-        self.__titleinstance = None
-        self.__set_lyrics()</code></pre>
-</details>
-</dd>
-</dl>
-</dd>
 </dl>
 </section>
 </article>
@@ -372,24 +172,13 @@ class geniuslyrics:
 <ul>
 <li>
 <h4><code><a title="components.songsearch.Song" href="#components.songsearch.Song">Song</a></code></h4>
-<ul class="">
+<ul class="two-column">
 <li><code><a title="components.songsearch.Song.artist" href="#components.songsearch.Song.artist">artist</a></code></li>
+<li><code><a title="components.songsearch.Song.getLyrics" href="#components.songsearch.Song.getLyrics">getLyrics</a></code></li>
+<li><code><a title="components.songsearch.Song.lyrics" href="#components.songsearch.Song.lyrics">lyrics</a></code></li>
 <li><code><a title="components.songsearch.Song.setArtist" href="#components.songsearch.Song.setArtist">setArtist</a></code></li>
 <li><code><a title="components.songsearch.Song.setTitle" href="#components.songsearch.Song.setTitle">setTitle</a></code></li>
 <li><code><a title="components.songsearch.Song.title" href="#components.songsearch.Song.title">title</a></code></li>
-</ul>
-</li>
-<li>
-<h4><code><a title="components.songsearch.geniuslyrics" href="#components.songsearch.geniuslyrics">geniuslyrics</a></code></h4>
-<ul class="two-column">
-<li><code><a title="components.songsearch.geniuslyrics.get_artist" href="#components.songsearch.geniuslyrics.get_artist">get_artist</a></code></li>
-<li><code><a title="components.songsearch.geniuslyrics.get_artistinstance" href="#components.songsearch.geniuslyrics.get_artistinstance">get_artistinstance</a></code></li>
-<li><code><a title="components.songsearch.geniuslyrics.get_lyrics" href="#components.songsearch.geniuslyrics.get_lyrics">get_lyrics</a></code></li>
-<li><code><a title="components.songsearch.geniuslyrics.get_session" href="#components.songsearch.geniuslyrics.get_session">get_session</a></code></li>
-<li><code><a title="components.songsearch.geniuslyrics.get_title" href="#components.songsearch.geniuslyrics.get_title">get_title</a></code></li>
-<li><code><a title="components.songsearch.geniuslyrics.search_artist" href="#components.songsearch.geniuslyrics.search_artist">search_artist</a></code></li>
-<li><code><a title="components.songsearch.geniuslyrics.search_lyrics" href="#components.songsearch.geniuslyrics.search_lyrics">search_lyrics</a></code></li>
-<li><code><a title="components.songsearch.geniuslyrics.search_title" href="#components.songsearch.geniuslyrics.search_title">search_title</a></code></li>
 </ul>
 </li>
 </ul>
