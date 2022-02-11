@@ -23,28 +23,28 @@ def clean_lyrics(rawlyrics):
         str.replace("\n\n", "\n").\
         str.replace('[0-9]+', '',regex= True).\
         str.split("\n").\
-        explode()
+        explode(ignore_index=True)
 
-clean = clean_lyrics(testlyrics)
-clean.size
+lyrics = clean_lyrics(testlyrics)
 
-type(clean)
+lyrics.to_json()
+
+pd.read_json(lyrics.to_json(), typ='series') == lyrics
+
+d.values[[2]]
 
 def distances(cleanlyrics):
-
     d = np.zeros(shape=[cleanlyrics.size,cleanlyrics.size])
-
     for i,line in enumerate(cleanlyrics):
         for j, line2 in enumerate(cleanlyrics):
             d[i,j] = 1-nltk.jaccard_distance(set(line), set(line2))    
     return d
-
-visualisation.plot(distances(clean))
-
-clean.values
 
 d = np.zeros(shape=[clean.size,clean.size])
 d
 for i,line in enumerate(cleanlyrics):
     for j, line2 in enumerate(cleanlyrics):
         d[i,j] = 1-nltk.jaccard_distance(set(line), set(line2))    
+
+
+distance(d.values[[2]])

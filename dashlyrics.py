@@ -5,6 +5,7 @@ import dash
 from dash import dash, dcc, html, dash_table
 from dash.dependencies import Output, Input, State
 import json 
+import pandas as pd
 
 from components import songsearch
 from components import nlp
@@ -49,14 +50,14 @@ def get_lyrics(search,artist,songtitle):
         lyrics = song.setArtist(artist).setTitle(songtitle).getLyrics()
         if lyrics is not None:
             lyrics = nlp.clean_lyrics(lyrics)
-            return json.dumps(lyrics)
+            return lyrics.to_json(orient="split")
     else:
         return json.dumps("no data here")
 
 @app.callback(Output('example-graph', 'figure'), Input('intermediate-value', 'data'))
 def update_graph(jsonified_cleaned_data):
     if jsonified_cleaned_data is not None:
-        lyrics = json.loads(jsonified_cleaned_data)
+        lyrics = pd.read_json(jsonified_cleaned_data, typ='series', orient='records')
         distances = nlp.distances(lyrics)    
         figure = visualisation.heatmap(distances)
         return figure
