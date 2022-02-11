@@ -13,28 +13,33 @@ addons:
     organization: "jliekenbrock"
     token: $SONAR_TOKEN
 
-# other script steps might be done before running the actual analysis
-# command to run tests
-script: true
-  #- pytest
-  # It is also possible to run sonar-scanner like this instead of integrating it directly in github
-  #- sonar-scanner
-  #- pdoc --force --html --output-dir docs components
+jobs:
+  include:
+    - stage: unit tests
+      script:
+        - pytest
+    - stage: metrics
+      script:
+        - sonar-scanner
+    - stage: generate documentation
+      script:
+        - mkdocs build --verbose --clean --strict
+        - pdoc --force --html --output-dir docs components
+    - stage: deploy
+      script: rvm $(travis_internal_ruby) --fuzzy do ruby -S gem install faraday -v 1.8.0
+      deploy:
+        provider: heroku
+        api_key: $HEROKU_TOKEN
+          app: 
+            main: lyricsvis
+    - stage: deploy
+      script: pass
+      deploy:
+        provider: pages
+        skip_cleanup: true
+        github_token: $GITHUB_TOKEN
+        keep_history: true
+        local_dir: site
+        on:
+          branch: main
 
-before_deploy:
-  - rvm $(travis_internal_ruby) --fuzzy do ruby -S gem install faraday -v 1.8.0
-  - mkdocs build --verbose --clean --strict # Build a local version of the docs
-  - pdoc --force --html --output-dir docs components
-
-deploy:
-  - provider: heroku
-    api_key: $HEROKU_TOKEN
-    app: 
-      main: lyricsvis
-  - provider: pages
-    skip_cleanup: true
-    github_token: $GITHUB_TOKEN
-    keep_history: true
-    local_dir: site
-    on:
-      branch: main
