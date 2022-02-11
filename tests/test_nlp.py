@@ -1,22 +1,14 @@
 from components import nlp
+import numpy as np
+import pandas as pd
+from pandas import testing as tm
 
-testlyrics = open('./tests/testsong.txt').read()
-testlyricsclean = open('./tests/testsongclean.txt').read()
-testlyricsdist = open('./tests/distances.txt').read()
-
-testlyricsclean
-testlyricsdist
-
-nlp.distances(nlp.clean_lyrics(testlyrics))
-
-s.to_pickle('filename')
-
-and
-
-s = pd.read_pickle('filename')
+testlyrics = open('./tests/testdata/testsong.txt').read()
+testlyricsclean = pd.read_pickle("tests/testdata/testsongclean")
+testlyricsdist = np.load("tests/testdata/distances.npy")
 
 def test_clean_lyrics():
-    assert str(nlp.clean_lyrics(testlyrics)) == testlyricsclean
+    tm.assert_series_equal(nlp.clean_lyrics(testlyrics), testlyricsclean)
 
-#def test_distances():
-#    assert str(nlp.distances(testlyricsclean)) == testlyricsdist
+def test_distances():
+    np.testing.assert_array_equal(nlp.distances(testlyricsclean), testlyricsdist)
