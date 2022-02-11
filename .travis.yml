@@ -16,10 +16,9 @@ addons:
 # other script steps might be done before running the actual analysis
 # command to run tests
 script: true
-  #- pytest
+  - pytest
   # It is also possible to run sonar-scanner like this instead of integrating it directly in github
-  #- sonar-scanner
-  #- pdoc --force --html --output-dir docs components
+  - sonar-scanner
 
 before_deploy:
   - rvm $(travis_internal_ruby) --fuzzy do ruby -S gem install faraday -v 1.8.0

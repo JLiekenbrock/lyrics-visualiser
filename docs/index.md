@@ -37,7 +37,10 @@ The build management and continuos delivery are also completely cloud based.
 
 I used Travis for the build management and continuos delivery because all the services i use integrate extremely well with it. 
 
-My Travis Pipeline: <a href="https://github.com/JLiekenbrock/lyrics-visualiser/blob/main/.travis.yml">travis.yml</a>
+My Travis Pipeline yaml: <a href="https://github.com/JLiekenbrock/lyrics-visualiser/blob/main/.travis.yml">travis.yml</a>
+
+[![Build Status](https://app.travis-ci.com/JLiekenbrock/lyrics-visualiser.svg?branch=main)](https://app.travis-ci.com/JLiekenbrock/lyrics-visualiser)
+
 
 ### Build Management 
 
