@@ -1,8 +1,8 @@
-from components import songsearch
+from components import geniuswrapper
 
 import lyricsgenius
 
-genius = songsearch.geniuslyrics()
+genius = geniuswrapper.geniuslyrics()
 
 def test_session():
     """Artist
@@ -30,8 +30,8 @@ def test_search_lyrics():
     """
     Test the set_title method
     """
-    genius.search_lyrics("Let It Be","The Beatles")
-    assert type(genius.get_lyrics()) == str
+    genius.search_lyrics("Hey Jude","The Beatles")
+    assert genius.get_lyrics() == open('./tests/HeyJude.txt').read()
 
 
 def test_search_lyrics_invalid():

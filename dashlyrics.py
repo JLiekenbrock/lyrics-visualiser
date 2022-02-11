@@ -12,7 +12,6 @@ from components import visualisation
 
 app = dash.Dash(__name__)
 server = app.server
-genius = songsearch.geniuslyrics()
 song = songsearch.Song()
 
 
@@ -47,14 +46,9 @@ app.layout = html.Div(children=[
 )
 def get_lyrics(search,artist,songtitle):
     if artist not in [None, ""] and songtitle not in [None,""]:
-        
-        song.setArtist("The Beatles").setTitle("Hey Jude")
-
-        new_artist = artist
-        new_songtitle = songtitle
-        s = genius.search_lyrics(new_artist, new_songtitle)
-        if s is not None:
-            lyrics = nlp.clean_lyrics(s)
+        lyrics = song.setArtist(artist).setTitle(songtitle).getLyrics()
+        if lyrics is not None:
+            lyrics = nlp.clean_lyrics(lyrics)
             return json.dumps(lyrics)
     else:
         return json.dumps("no data here")
