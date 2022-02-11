@@ -5,6 +5,7 @@ import re
 
 # clean lyrics
 def clean_lyrics(rawlyrics):
+
     song = re.sub("[$[*&?].*[$]*&?]", '', rawlyrics)
     song = re.sub("EmbedShare.*", '', song)
     song = song.replace("\n\n\n", "\n")

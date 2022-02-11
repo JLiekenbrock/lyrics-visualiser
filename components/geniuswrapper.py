@@ -1,6 +1,6 @@
 import lyricsgenius
 
-# wrapper for lyricsgenius which remembers last search
+# wrapper for lyrics which remembers last search
 # if there are several providers implemented this class should be inherited
 class geniuslyrics:
     """
