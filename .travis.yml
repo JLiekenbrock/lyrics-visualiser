@@ -7,6 +7,7 @@ cache:
   npm: true
 
 before_install:
+  # make sure node version is up to date
   - nvm install node
 
 install:
