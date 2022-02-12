@@ -8,6 +8,9 @@ This is the Documentatin for my project. I ended up putting a lot of effort on t
 
 ## 2. UML 
 
+The UML Diagrams were done with plantuml. They are rerendered on every commit using an mkdocs uml diagram.
+You can find the definitions here: <a href="https://github.com/JLiekenbrock/lyrics-visualiser/tree/gh-pages/UML">UML></a>
+
 ### Use Case Diagram
 ![file](./UML/uc.svg)
 
@@ -124,7 +127,7 @@ mkdocs also recreates the uml-diagrams every time it runs.
 
 ### Continuos Delivery
 
-When the build is successful e.g. sonarqube and pytest are happy the documentation is regenerated and published to github pages.
+When the build is successful e.g. sonarqube and pytest are happy the documentation is regenerated and published to <a href="https://github.com/JLiekenbrock/lyrics-visualiser/tree/gh-pages">github pages</a>.
 There is  <a href="https://jliekenbrock.github.io/lyrics-visualiser/lyrics-visualiser/index.html">technical documentation</a> generated based on the source code as well as what you are [reading right now](https://jliekenbrock.github.io/lyrics-visualiser/index.html).
 
 [Documentation Code](https://github.com/JLiekenbrock/lyrics-visualiser/blob/main/docs/index.md)
