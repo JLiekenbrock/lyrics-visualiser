@@ -34,7 +34,9 @@ before_deploy:
 deploy:
   - provider: heroku
     api_key: $HEROKU_TOKEN
-    app: 
+    app: .
+
+
       main: lyricsvis
   - provider: pages
     skip_cleanup: true

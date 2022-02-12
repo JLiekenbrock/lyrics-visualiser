@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="477px" preserveAspectRatio="none" style="width:384px;height:477px;background:#FFFFFF;" version="1.1" viewBox="0 0 384 477" width="384px" zoomAndPan="magnify"><defs><filter height="300%" id="fkah3pbo6dibb" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><!--MD5=[484b34d127abfa7cdc038177fc682b66]
+cluster lyrics-visualiser--><rect fill="#FFFFFF" filter="url(#fkah3pbo6dibb)" height="458" style="stroke:#000000;stroke-width:1.5;" width="222" x="150" y="7"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="128" x="197" y="21.9951">lyrics-visualiser</text><ellipse cx="260.964" cy="58.1928" fill="#FEFECE" filter="url(#fkah3pbo6dibb)" rx="68.964" ry="16.1928" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="90" x="212.964" y="61.9404">lookup lyrics</text><ellipse cx="260.7915" cy="129.1583" fill="#FEFECE" filter="url(#fkah3pbo6dibb)" rx="88.7915" ry="20.1583" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="139" x="191.2915" y="132.005">lookup sheet notes</text><ellipse cx="261.1868" cy="200.9374" fill="#FEFECE" filter="url(#fkah3pbo6dibb)" rx="72.6868" ry="16.9374" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="100" x="208.1868" y="204.6849">visualise lyrics</text><ellipse cx="261.2229" cy="274.0446" fill="#FEFECE" filter="url(#fkah3pbo6dibb)" rx="93.2229" ry="21.0446" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="149" x="186.7229" y="276.8913">visualise sheet notes</text><ellipse cx="260.7915" cy="350.1583" fill="#FEFECE" filter="url(#fkah3pbo6dibb)" rx="88.7915" ry="20.1583" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="139" x="191.2915" y="353.005">lookup sheet notes</text><ellipse cx="261.0118" cy="426.9024" fill="#FEFECE" filter="url(#fkah3pbo6dibb)" rx="95.0118" ry="21.4024" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="153" x="184.5118" y="429.749">analyse song structre</text><!--MD5=[1da348eb3a8ab0eed730e1defa8ec0b1]
+entity ml--><ellipse cx="56" cy="207" fill="#FEFECE" filter="url(#fkah3pbo6dibb)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><path d="M56,215 L56,242 M43,223 L69,223 M56,242 L43,257 M56,242 L69,257 " fill="none" filter="url(#fkah3pbo6dibb)" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="100" x="6" y="275.4951">music listener</text><!--MD5=[c617d1e94391e02d80a02faf38d11fae]
+entity m--><ellipse cx="56" cy="396" fill="#FEFECE" filter="url(#fkah3pbo6dibb)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><path d="M56,404 L56,431 M43,412 L69,412 M56,431 L43,446 M56,431 L69,446 " fill="none" filter="url(#fkah3pbo6dibb)" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="62" x="25" y="464.4951">musician</text><!--MD5=[249a37fd8b1da27d7000208f1ed71ef2]
+link ml to UC1--><path d="M70.6776,197.201 C83.8795,163.91 107.056,118.099 142,91 C157.135,79.263 176.219,71.7 194.604,66.827 " fill="none" id="ml-to-UC1" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="199.767,65.522,190.061,63.8505,194.9196,66.7478,192.0223,71.6063,199.767,65.522" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[8489ce30f90761988fb663ee3eca4427]
+link ml to UC2--><path d="M98.2015,197.404 C111.387,186.04 126.584,174.489 142,166 C157.902,157.244 176.171,150.236 193.51,144.776 " fill="none" id="ml-to-UC2" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="198.373,143.277,188.5941,142.1054,193.5948,144.7497,190.9505,149.7505,198.373,143.277" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[684d63d85ec4411add6f201d42dd693d]
+link ml to UC3--><path d="M106.141,229.043 C133.761,224.009 168.504,217.677 197.983,212.304 " fill="none" id="ml-to-UC3" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="203.044,211.381,193.4723,209.0609,198.1252,212.2782,194.9078,216.931,203.044,211.381" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[08bf6909503b5834f98baf4946458b4d]
+link ml to UC4--><path d="M106.141,246.715 C128.912,250.753 156.525,255.65 182.039,260.174 " fill="none" id="ml-to-UC4" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="187.111,261.074,178.9491,255.5619,182.188,260.1997,177.5502,263.4386,187.111,261.074" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[f12d31660735bca03e95e0d26eb981cd]
+link ml to UC5--><path d="M96.2473,278.785 C109.81,291.122 125.714,303.817 142,313 C157.727,321.868 175.854,328.902 193.108,334.35 " fill="none" id="ml-to-UC5" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="197.949,335.845,190.5305,329.3668,193.1717,334.3693,188.1693,337.0105,197.949,335.845" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[92cc059f23f36a1e8243a5253174fbca]
+link ml to UC6--><path d="M70.5355,278.532 C83.767,312.292 107.062,359.327 142,388 C154.212,398.0225 169.092,405.5023 184.115,411.0739 " fill="none" id="ml-to-UC6" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="189.211,412.8912,182.0763,406.1018,184.5012,411.2126,179.3905,413.6375,189.211,412.8912" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[1ea9913518f899271a589e916fd7a2fe]
+link m to UC6--><path d="M87.3912,427 C107.093,427 133.978,427 160.663,427 " fill="none" id="m-to-UC6" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="165.995,427,156.995,423,160.995,427,156.995,431,165.995,427" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[3a16f5d1ac87faf3ab5d7c04f911d5f4]
+@startuml
+left to right direction
+actor "music listener" as ml
+actor "musician" as m
+rectangle lyrics-visualiser {
+usecase "lookup lyrics" as UC1
+usecase "lookup sheet notes" as UC2
+usecase "visualise lyrics" as UC3
+usecase "visualise sheet notes" as UC4
+usecase "lookup sheet notes" as UC5
+usecase "analyse song structre" as UC6
+}
+ml - -> UC1
+ml - -> UC2
+ml - -> UC3
+ml - -> UC4
+ml - -> UC5
+ml - -> UC6
+m - -> UC6
+@enduml
+
+PlantUML version 1.2022.2beta1(Unknown compile time)
+(GPL source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg>
