@@ -7,10 +7,9 @@ cache:
   npm: true
 
 before_install:
-  - nvm install node 
+  - npm update -g
 
 install:
-  - npm install
   - pip install -r requirements.txt
   - pip install mkdocs mkdocs-material pymdown-extensions pygments mkdocs-build-plantuml-plugin # Install the required dependencies
 
