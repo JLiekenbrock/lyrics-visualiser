@@ -1,13 +1,21 @@
 # Project Documentation
  
+This is the Documentatin for my project. I ended up putting a lot of effort on the CI/CD Part.
+
 ## 1. git
 
 <a href="https://github.com/JLiekenbrock/lyrics-visualiser">Github Repository</a>
 
 ## 2. UML 
 
+### Use Case Diagram
 ![file](./UML/uc.svg)
+
+### Component Diagram
 ![file](./UML/components.svg)
+
+### Component Diagram with more Detail
+
 ![file](./UML/componentsdetail.svg)
 
 
@@ -18,8 +26,7 @@
 
 I used <a href="https://sonarcloud.io/summary/new_code?id=JLiekenbrock_lyrics-visualiser" target="_blank">Sonarcloud</a>, which is sonarqube in the cloud, as i wanted the whole project to be cloud based.
 It also gives you the ability to embed lot's of different badges:
-[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=JLiekenbrock_lyrics-visualiser&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=JLiekenbrock_lyrics-visualiser)
-
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=jliekenbrock&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=jliekenbrock)
 
 ## 5. Clean Code
 
@@ -137,7 +144,7 @@ Shortcuts i like:
 Shift+Enter is very useful. It runs the selected lines of code in a python terminal in the IDE.
 Otherwise i'm mostly using the standard shortcuts everyone else uses.
 
-## 10. DSLDSL 
+## 10. DSL
 I created a class that uses the style of the Cars example in moodle:
 <a href="https://jliekenbrock.github.io/lyrics-visualiser/lyrics-visualiser/components/songsearch.html">"DSL" Class</a>.
 I also used a DSL like Regex in the module nlp.py.
