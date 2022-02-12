@@ -1,0 +1,21 @@
+@startuml
+package "Web Application" {
+  get_lyrics -down-> songsearch
+  update_graph -down-> nlp
+  update_graph -down-> visualisation
+}
+package "nlp" {
+  [cleanlyrics]
+  [distances]
+}
+package "visualisation" {
+ [heatmap]
+ [graph]
+}
+package "songsearch"{
+  [song] -down-> apiwrapper
+}
+package "apiwrapper" {
+  song -down-> searchlyrics  
+}
+@enduml

@@ -1,0 +1,8 @@
+@startuml
+[web application] -down-> [songsearch]
+[songsearch] -> [api-wrapper] 
+[web application] -down-> [nlp]
+[web application] -down-> [visualisation]
+[web application] -down-> [sheetmusic-search]
+[web application] -down-> [sheetmusic processor]
+@enduml

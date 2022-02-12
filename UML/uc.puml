@@ -1,0 +1,20 @@
+@startuml
+left to right direction
+actor "music listener" as ml
+actor "musician" as m
+rectangle lyrics-visualiser {
+  usecase "lookup lyrics" as UC1
+  usecase "lookup sheet notes" as UC2
+  usecase "visualise lyrics" as UC3
+  usecase "visualise sheet notes" as UC4
+  usecase "lookup sheet notes" as UC5
+  usecase "analyse song structre" as UC6
+}
+ml --> UC1
+ml --> UC2
+ml --> UC3
+ml --> UC4
+ml --> UC5
+ml --> UC6
+m --> UC6
+@enduml
