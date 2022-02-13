@@ -1,6 +1,6 @@
 # Project Documentation
  
-This is the Documentatin for my project. I ended up putting a lot of effort on the CI/CD Part.
+This is the Documentatin for my project. I ended up putting a lot of effort into the CI/CD Part as i easily get obsessed with automation.
 
 ## 1. git
 
@@ -8,7 +8,7 @@ This is the Documentatin for my project. I ended up putting a lot of effort on t
 
 ## 2. UML 
 
-The UML Diagrams were done with plantuml. They are rerendered on every commit using an mkdocs uml diagram.
+The UML Diagrams were done with plantuml. They are rerendered using an mkdocs plantuml addon.
 You can find the definitions here: <a href="https://github.com/JLiekenbrock/lyrics-visualiser/tree/gh-pages/UML">UML></a>
 
 ### Use Case Diagram
@@ -36,6 +36,7 @@ It also gives you the ability to embed lot's of different badges:
 My Top 10 Clean Code Principle
 
 1. DRY: 
+
     DRY stands for don't repeat yourself. The principle is very important in my opinion, because repition of code is easily avoidable and makes the code very hard to maintain. Two common rules to make sure to apply DRY is to define constants for values which occur frequently. 
     Another is to use functions/classes/methods which increase the abstraction level of the code, so that it becomes reusable by design. 
 
@@ -43,12 +44,14 @@ My Top 10 Clean Code Principle
     [![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=jliekenbrock&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=jliekenbrock)
 
 2. KISS:
+
     KISS means keep it simple stupid. Applying this principle makes sure that the code is simple to understand.
     In general it states that simple solutions should be preferred to complicated. This obviously depends on the sitation a lot.
     I mostly apply this principle when choosing frameworks for example. I decided to use pdoc, mkdocs, plantuml, pytest and travis over other solutions there are
     because all of them use very simple and straightforward code.
 
 3. Law of Demeter (LoD) a.k.a priciple of least knowledge
+
     The law of demeter is paradigm in oop and is a case of loose coupling. 
     The main ideas are:
     - Each unit should have only limited knowledge about other units: only units "closely" related to the current unit.
@@ -63,12 +66,14 @@ My Top 10 Clean Code Principle
     <a href="https://jliekenbrock.github.io/lyrics-visualiser/lyrics-visualiser/components/index.html">Components</a>
 
 4. SRP Single-responsibility principle
+
     This principle states that each part of the software should only have responsibiltiy for a specific part of the 
     software and encapsulate it. The opposite of this would be a god object, like also mentioned in the ISAQB Talk.
     The pattern makes the software easier to understand and also maintainable.
     DDD really helps in using this pattern. I applied it by creating indepenedent modules for all aspects of the application.
 
 5. ISP Interface Segregation Principle
+
     "No client should be forced to depend on methods it does not use."
     This means, that an interface should only implement necessary dependencies.
     I wrote two interfaces. The geniuswrapper, which is an interface to the genius api implementation i'm using.
@@ -76,6 +81,7 @@ My Top 10 Clean Code Principle
     Then there is another wrapper for this in songsearch.py which further abstracts the process.
 
 6. Naming Conventions
+
     Good names are especially important in programm and often hard to find.
     A good name for an object should answer these questions:
     Why it exists?
@@ -84,12 +90,14 @@ My Top 10 Clean Code Principle
     I tried to use self-explananotry names in all my code.
 
 7. Principle of Least Surprise
-    This principle comes from Interfacedesign for users. In this context it means,
-    that the user should not be surprised by the interface.
+
+    This principle comes from Interface design for users. In this context it means,
+    that the user should be surprised as little as possible by the interface/application.
     When applying it to code it is related to Naming Conventions. It states, that functions/ methods names should 
     make absolutely clear what they are doing, also in terms of sideeffects. 
 
 8. TDD: F.I.R.S.T Principles
+
     Testing is important in Software. And unit tests are code as well. 
     These are important rules for clean tests:
     It states that tests should be:
@@ -97,14 +105,16 @@ My Top 10 Clean Code Principle
     My tests fulfill all these criteria.
 
 9. YAGNI (Extreme Programming (XP))
+
     You Aren't Gonna Need It: 
     Only implement code which is absolutely necessary:
     "Always implement things when you actually need them, never when you just foresee that you need them."
     I actually noticed that i violated this principle, as i started writing code for features i anticipated.
     I never touched the code again afterwards.
 
-10. Worse is better
-    This principle means, that software quality does not correlate with functioality.
+10. Worse is better 
+
+    This principle is not about clean code, but still a usefull guideline. It means, that software quality does not correlate with functioality.
     A software with less functionality (worse) might actually be more useable (better) than 
     software with more functionality.
 
@@ -122,8 +132,7 @@ My Travis Pipeline yaml: <a href="https://github.com/JLiekenbrock/lyrics-visuali
 ### Build Management 
 
 The Travis Pipeline runs the unit tests by calling pytest and is also connected to sonarcloud. 
-When the tests succeed this documentation is generated using the python libraries mkdocs and pdocs3.
-mkdocs also recreates the uml-diagrams every time it runs.
+When the tests succeed this documentation is generated using the python libraries mkdocs and pdocs3. 
 
 ### Continuos Delivery
 
@@ -132,15 +141,15 @@ There is  <a href="https://jliekenbrock.github.io/lyrics-visualiser/lyrics-visua
 
 [Documentation Code](https://github.com/JLiekenbrock/lyrics-visualiser/blob/main/docs/index.md)
 
+THe app is also deployed to <a href="http://lyricsvis.herokuapp.com/">heroku</a> on every successfull commit.
 
 ## 7. Unit-Tests
 The [Unit tests ](https://jliekenbrock.github.io/lyrics-visualiser/lyrics-visualiser/tests/index.html) are written with the help of the python library pytest.
 
 ## 9. IDE
 I use visual studio code as main IDE as it has great support for my main languages, namely R and Python.
-It also has integration for the Github Copilot AI, which is great in my opinion. It is especially useful when trying out new things like 
-libraries, because it often comes up with useful suggestions which helps exploring things faster.
-The in built explorer of vscode is also great as it easily let's you search through all files in your opened directory. You can even replace 
+It also allows you to use the <a href="https://copilot.github.com/">Github Copilot AI</a>, which is great in my opinion. It is especially useful when trying out new things like libraries, because it often comes up with useful suggestions which helps exploring things faster.
+The in-built explorer of vscode is also great as it easily let's you search through all files in your opened directory. You can even replace 
 code across multiple files at once. 
 
 Shortcuts i like:
