@@ -27,7 +27,7 @@ You can find the definitions here: <a href="https://github.com/JLiekenbrock/lyri
 
 ## 4. Metrics
 
-I used <a href="https://sonarcloud.io/summary/new_code?id=JLiekenbrock_lyrics-visualiser" target="_blank">Sonarcloud</a>, which is sonarqube in the cloud, as i wanted the whole project to be cloud based.
+I used <a href="https://sonarcloud.io/project/overview?id=jliekenbrock" target="_blank">Sonarcloud</a>, which is sonarqube in the cloud, as i wanted the whole project to be cloud based.
 It also gives you the ability to embed lot's of different badges:
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=jliekenbrock&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=jliekenbrock)
 
